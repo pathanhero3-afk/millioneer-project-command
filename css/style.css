@@ -1,0 +1,163 @@
+:root {
+  --black: #0b0b0c;
+  --panel: #141416;
+  --gold: #d4af37;
+  --gold-soft: #f1d77a;
+  --text: #f5f1e6;
+  --muted: #9a927a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: radial-gradient(circle at top, #1c1a14 0%, var(--black) 60%);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+.topbar {
+  padding: 32px 40px;
+  border-bottom: 1px solid var(--gold);
+  text-align: center;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.brand h1 {
+  color: var(--gold);
+  letter-spacing: 4px;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+}
+
+.brand p {
+  color: var(--muted);
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+.dashboard { padding: 40px; }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+}
+
+.label { color: var(--muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+.value { color: var(--gold-soft); font-size: 2.4rem; font-weight: 600; }
+
+.note { margin-top: 32px; color: var(--muted); font-size: 0.85rem; text-align: center; }
+
+.add-project {
+  margin-top: 48px;
+  background: var(--panel);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 12px;
+  padding: 28px;
+}
+
+.add-project h2 { color: var(--gold); margin-bottom: 20px; letter-spacing: 2px; }
+
+#project-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+#project-form input,
+#project-form select,
+#project-form textarea {
+  background: var(--black);
+  color: var(--text);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+}
+
+#project-form textarea { grid-column: 1 / -1; min-height: 90px; }
+
+#project-form button {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+  color: var(--black);
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#project-form button:hover { transform: translateY(-2px); }
+
+.projects { margin-top: 48px; }
+.projects h2, .project-detail h2 { color: var(--gold); letter-spacing: 2px; margin-bottom: 16px; }
+
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.project-item {
+  background: var(--panel);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 12px;
+  padding: 18px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.project-item:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2); }
+.project-item .code { color: var(--muted); font-size: 0.8rem; }
+.project-item .name { color: var(--gold-soft); font-size: 1.1rem; margin: 6px 0; }
+.project-item .meta { color: var(--muted); font-size: 0.85rem; }
+
+.project-detail {
+  margin-top: 24px;
+  background: var(--panel);
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  padding: 24px;
+}
+.project-detail:empty { display: none; }
+.project-detail ol { margin: 10px 0 18px 20px; line-height: 1.8; }
+.project-detail .current { color: var(--gold-soft); font-weight: 700; }
+.project-detail .history-item { color: var(--muted); font-size: 0.9rem; margin-bottom: 8px; }
+.project-detail .controls { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 12px 0 18px; }
+.project-detail select, .project-detail input {
+  background: var(--black); color: var(--text);
+  border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 8px; padding: 8px 10px;
+}
+.project-detail button {
+  background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+  color: var(--black); border: none; border-radius: 8px; padding: 9px 16px;
+  font-weight: 700; cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .topbar, .dashboard { padding: 20px; }
+}

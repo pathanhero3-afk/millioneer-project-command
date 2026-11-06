@@ -1,0 +1,13 @@
+{
+  "name": "Millionaire Group - Project Command",
+  "short_name": "Project Command",
+  "description": "Official project management for MILLIONAIRE GROUP OF COMPANIES",
+  "start_url": "index.html",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b0b0c",
+  "theme_color": "#d4af37",
+  "icons": [
+    { "src": "assets/images/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

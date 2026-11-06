@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Millionaire Group of Companies - Project Command</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#d4af37">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="icon" href="assets/images/icon.svg" type="image/svg+xml">
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js");
+    }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>MILLIONAIRE GROUP OF COMPANIES</h1>
+      <p>CEO: Hashmat Afridi &nbsp;|&nbsp; Created &amp; Developed by: Basit Khan</p>
+    </div>
+  </header>
+
+  <main class="dashboard">
+    <section class="stats">
+      <article class="card"><span class="label">Total Projects</span><span class="value" id="stat-total">0</span></article>
+      <article class="card"><span class="label">Active Projects</span><span class="value" id="stat-active">0</span></article>
+      <article class="card"><span class="label">In Planning</span><span class="value" id="stat-planning">0</span></article>
+      <article class="card"><span class="label">Completed</span><span class="value" id="stat-completed">0</span></article>
+      <article class="card"><span class="label">On Hold</span><span class="value" id="stat-hold">0</span></article>
+    </section>
+    <section class="projects">
+      <h2>Projects</h2>
+      <p style="margin-bottom:16px"><a href="/api/projects/report.csv" class="note" style="color:var(--gold)">Download Projects Report (Excel / CSV)</a></p>
+      <div id="project-list" class="project-list"></div>
+      <div id="project-detail" class="project-detail"></div>
+    </section>
+
+    <section class="add-project">
+      <h2>Add New Project</h2>
+      <form id="project-form">
+        <input name="project_code" placeholder="Project ID (e.g. MG-001)" required>
+        <input name="name" placeholder="Project name" required>
+        <input name="location" placeholder="Location">
+        <input name="category" placeholder="Category">
+        <input name="start_date" type="date" title="Starting date">
+        <input name="expected_completion_date" type="date" title="Expected completion">
+        <input name="budget" type="number" min="0" step="any" placeholder="Budget">
+        <select name="status">
+          <option>Planning</option>
+          <option>Active</option>
+          <option>On Hold</option>
+          <option>Completed</option>
+        </select>
+        <textarea name="description" placeholder="Description"></textarea>
+        <button type="submit">Save Project</button>
+      </form>
+      <p id="form-message" class="note"></p>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
